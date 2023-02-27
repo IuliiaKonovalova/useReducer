@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const HomePage = () => {
@@ -19,10 +20,7 @@ const HomePage = () => {
     }
   }
 
-  const [
-    state,
-    dispatch
-  ] = useReducer(reducer, { count: 0 });
+  const [ state, dispatch ] = useReducer(reducer, { count: 0 });
 
 
   const increment = () => {
@@ -36,11 +34,22 @@ const HomePage = () => {
   return (
     <div>
       <h1>Home Page</h1>
-      <div>
-        <button onClick={decrement}>-</button>
-          <span>{state.count}</span>
-        <button onClick={increment}>+</button>
-
+      <div 
+        style={
+          {
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }
+        }
+      >
+        <Link to="/todo">Todo Page</Link>
+        <div>
+          <button onClick={decrement}>-</button>
+            <span>{state.count}</span>
+          <button onClick={increment}>+</button>
+        </div>
       </div>
     </div>
   );
