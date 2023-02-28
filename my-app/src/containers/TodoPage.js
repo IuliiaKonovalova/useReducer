@@ -1,11 +1,15 @@
 import React, { useState, useReducer } from 'react';
 import { Link } from 'react-router-dom';
+import TodoItem from '../components/Todo';
 
 const TodoPage = () => {
+  const [todo, dispatch] = useReducer(reducer, []);
+  const [name, setName] = useState('');
 
   const ACTIONS = {
     ADD_TODO: 'add-todo',
     TOGGLE_TODO: 'toggle-todo',
+    DELETE_TODO: 'delete-todo'
   }
 
   function reducer(todos, action) {
@@ -24,14 +28,14 @@ const TodoPage = () => {
   }
 
 
-  const [todo, dispatch] = useReducer(reducer, []);
-  const [name, setName] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
     dispatch({ type: ACTIONS.ADD_TODO, payload: { name: name } });
     setName('');
   }
+
+  // console.log(todo);
 
   return (
     <div>
@@ -47,9 +51,7 @@ const TodoPage = () => {
       </form>
       <div>
         {todo.map(todo => {
-          return <div key={todo.id}>
-            <span>{todo.name}</span>
-          </div>
+          return <TodoItem key={todo.id} todo={todo} />
         })}
       </div>
     </div>
