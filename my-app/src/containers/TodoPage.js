@@ -17,6 +17,9 @@ const TodoPage = () => {
           }
           return todo;
         });
+      case ACTIONS.DELETE_TODO:
+        console.log('delete');
+        return todos.filter(todo => todo.id !== action.payload.id)
       default:
         return todos;
     }
