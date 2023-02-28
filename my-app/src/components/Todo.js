@@ -9,6 +9,13 @@ function TodoItem ({ todo, dispatch }) {
     console.log('toggle');
     dispatch({ type: ACTIONS.TOGGLE_TODO, payload: { id: todo.id } });
   }
+
+  function deleteTodo(e) {
+    e.preventDefault();
+    console.log('delete');
+    dispatch({ type: ACTIONS.DELETE_TODO, payload: { id: todo.id } });
+  }
+
   return (
     <div key={todo.id}>
       <span
@@ -16,14 +23,10 @@ function TodoItem ({ todo, dispatch }) {
       >
         {todo.name}
       </span>
-      <button
-        onClick={toggleTodo}
-      >
-        Toggle
-      </button>
-
+      <button onClick={toggleTodo}>Toggle</button>
+      <button onClick={deleteTodo}>Delete</button>
     </div>
-    // <></>
+
   )
 }
 
