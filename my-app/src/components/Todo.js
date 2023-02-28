@@ -1,6 +1,14 @@
 
-function TodoItem ({ todo }) {
-  console.log(todo);
+import React from 'react';
+import ACTIONS from '../actions/TodoActions';
+
+function TodoItem ({ todo, dispatch }) {
+
+  function toggleTodo(e) {
+    e.preventDefault();
+    console.log('toggle');
+    dispatch({ type: ACTIONS.TOGGLE_TODO, payload: { id: todo.id } });
+  }
   return (
     <div key={todo.id}>
       <span
@@ -8,6 +16,11 @@ function TodoItem ({ todo }) {
       >
         {todo.name}
       </span>
+      <button
+        onClick={toggleTodo}
+      >
+        Toggle
+      </button>
 
     </div>
     // <></>
