@@ -42,7 +42,9 @@ const TodoPage = () => {
 
 
   return (
-    <div>
+    <div
+      className='flex flex-col justify-center items-center bg-slate-300 h-screen'
+    >
       <h1>Todo Page</h1>
       <form
         onSubmit={handleSubmit}
@@ -50,6 +52,7 @@ const TodoPage = () => {
         <input
           type="text"
           placeholder='Enter name'
+          className='bg-slate-800 text-white p-2 rounded'
           value={name}
           onChange={e => setName(e.target.value)}/>
       </form>

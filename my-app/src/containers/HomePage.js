@@ -32,19 +32,18 @@ const HomePage = () => {
   }
 
   return (
-    <div>
+    <div
+      className='flex flex-col justify-center items-center bg-slate-300 h-screen'
+    >
       <h1>Home Page</h1>
-      <div 
-        style={
-          {
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }
-        }
+      <div
+        className='flex flex-col justify-center items-center'
       >
-        <Link to="/todo">Todo Page</Link>
+        <Link
+          className='text-white hover:text-blue-400 p-2 rounded'
+          to="/todo">
+            Go to Todo Page
+        </Link>
         <div>
           <button onClick={decrement}>-</button>
             <span>{state.count}</span>
